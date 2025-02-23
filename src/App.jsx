@@ -1,28 +1,21 @@
-import { useState } from 'react'
-import './App.css'
-import CartContextProvider from './Context/ContextProvider'
-import products from './Data/ProductData'
-import Cart from './Components/Cart'
-import Product from './Components/Product'
+import React from 'react';
+import './App.css';
+import CartContextProvider from './Context/ContextProvider';
+import ProductPage from './Components/ProductPage';
+import {Routes, Route} from 'react-router-dom'
+import Cart from './Components/Cart';
 
 function App() {
-
   return (
     <CartContextProvider>
-      <div className='app'>
-        <h1>Shopping Product </h1>
-        <div className='product'>
-          {products.map(product => (
-            <Product key={product.id} product={product} />
-          ))}
-
-        </div>
-        <Cart />
+      <div className="app bg-gray-100 min-h-screen p-6">
+        <Routes>
+          <Route path='/'  element={<ProductPage />}/>
+          <Route path='/cart'  element={<Cart />}/>
+        </Routes>
       </div>
-
-
     </CartContextProvider>
-  )
+  );
 }
 
-export default App
+export default App;
